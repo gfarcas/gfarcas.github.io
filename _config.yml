@@ -16,9 +16,9 @@
 title: George's Tech Blog
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+Experienced Systems Administrator with a demonstrated history of working in the enterprise enviroments as well as MSP's.  
+Skilled in VMware clusters, Veeam distributed environments, Linux System Administration and Windows Servers with a passion for scripting and programming.
+
 twitter_username: username
 github_username: gfarcas
 minimal_mistakes_skin: dark
