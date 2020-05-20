@@ -62,8 +62,8 @@ author:
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "Experienced Systems Administrator with a demonstrated history of working in the enterprise enviroments as well as MSP's. Skilled in VMware clusters, Veeam distributed environments, Linux System Administration and Windows Servers with a passion for scripting and programming."
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
+    - label: "Facebook"
+      icon: "fab fa-facebook"
       url: "https://"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
