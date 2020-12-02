@@ -29,8 +29,13 @@ Once you have finished following all the steps from the signup page, you will be
   In my personal case, I use disposable virtual machines for these types of activities in order to keep my environment clean. For this tutorial I have used a CentOS 8 VirtualBox VM and the following commands installed Terraform succesfully. 
 
 Install yum-config-manager to manage your repositories.
-```sudo yum install -y yum-utils```
+
+`sudo yum install -y yum-utils`
+
 Use yum-config-manager to add the official HashiCorp Linux repository.
-```sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo```
+
+`sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`
+
 Install.
-```sudo yum -y install terraform```
+
+`sudo yum -y install terraform`
