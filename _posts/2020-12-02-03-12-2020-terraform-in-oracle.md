@@ -1,6 +1,6 @@
 ---
 title: Provisioning compute with Terraform in Oracle Cloud
-date: 2019-04-18T15:34:30-04:00
+date: 2020-12-05T15:34:30-04:00
 categories:
   - Blog
 author: George Farcas
@@ -17,4 +17,9 @@ You might ask, why I have chosen Oracle Cloud for this tutorial? Well, I have do
 Even though AWS and Azure have always free tiers, they do not offer compute resources for free. Google offers a micro instance and I will make a tutorial covering that too.
 
 ## Creating the Oracle Cloud account
+
+First of all you need to create an Oracle Cloud account. For this, you need to go to the [Signup page](https://signup.oraclecloud.com/) of Oracle. 
+You will be required to enter a payment card in the profile for verification purposes. If you use only Always Free resources after the free trial has ended, you shouldn't worry about costs as they are as the name suggests, always free. In our exampe we will use the always free compute instance and the vcn network. 
+
+Once you have finished following all the steps from 
 
