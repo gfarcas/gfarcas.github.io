@@ -28,13 +28,18 @@ Once you have finished following all the steps from the signup page, you will be
   You can install Terraform on Windows, Mac, or Linux. You can find the instalation instructions here: [Terraform Cli Instalation](https://learn.hashicorp.com/tutorials/terraform/install-cli)
   In my personal case, I use disposable virtual machines for these types of activities in order to keep my environment clean. For this tutorial I have used a CentOS 8 VirtualBox VM and the following commands installed Terraform succesfully. 
 
-Install yum-config-manager to manage your repositories.
-
-`sudo yum install -y yum-utils`
+Install yum-config-manager to manage your repositories. 
+```shell
+sudo yum install -y yum-utils
+```
 Use yum-config-manager to add the official HashiCorp Linux repository.
-`sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`
+```shell
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`
+```
 Install.
-`sudo yum -y install terraform`
+```shell
+sudo yum -y install terraform
+```
 After finishing installing Terraform, you need to wait for the activation of the Oracle account before continuing on the next step
 
 To be continued...
