@@ -21,5 +21,10 @@ Even though AWS and Azure have always free tiers, they do not offer compute reso
 First of all you need to create an Oracle Cloud account. For this, you need to go to the [Signup page](https://signup.oraclecloud.com/) of Oracle. 
 You will be required to enter a payment card in the profile for verification purposes. If you use only Always Free resources after the free trial has ended, you shouldn't worry about costs as they are as the name suggests, always free. In our exampe we will use the always free compute instance and the vcn network. 
 
-Once you have finished following all the steps from 
+Once you have finished following all the steps from the signup page, you will be waiting on the activation which might take from minutes to hours. While waiting on the activation, you can proceed with the next step
+
+## Installing terraform locally
+
+  You can install Terraform on Windows, Mac, or Linux. You can find the instalation instructions here: [Terraform Cli Instalation](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+  In my personal case, I use disposable virtual machines for these types of activities in order to keep my environment clean. For this tutorial I have used a CentOS 8 and the following commands installed Terraform succesfully.
 
