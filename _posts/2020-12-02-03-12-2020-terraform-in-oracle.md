@@ -1,6 +1,6 @@
 ---
 title: Provisioning instances with terraform
-date: 2020-12-02 21:42
+date: 2019-04-18T15:34:30-04:00
 categories:
   - Blog
 author: 
