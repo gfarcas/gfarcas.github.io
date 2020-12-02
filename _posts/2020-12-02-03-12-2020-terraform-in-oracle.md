@@ -1,6 +1,5 @@
 ---
-layout: post
-title: 
+title: Provisioning instances with terraform
 date: 2020-12-02 21:42
 categories:
   - Blog
