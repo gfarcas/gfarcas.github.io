@@ -31,11 +31,10 @@ Once you have finished following all the steps from the signup page, you will be
 Install yum-config-manager to manage your repositories.
 
 `sudo yum install -y yum-utils`
-
 Use yum-config-manager to add the official HashiCorp Linux repository.
-
 `sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`
-
 Install.
-
 `sudo yum -y install terraform`
+After finishing installing Terraform, you need to wait for the activation of the Oracle account before continuing on the next step
+
+To be continued...
