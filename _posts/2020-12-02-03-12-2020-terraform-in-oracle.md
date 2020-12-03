@@ -16,7 +16,7 @@ You might ask, why I have chosen Oracle Cloud for this tutorial? Well, I have do
 - Oracle Cloud Free Tier offers (at the time of the article) 2 Compute virtual machines with 1/8 OCPU and 1 GB memory each.
 Even though AWS and Azure have always free tiers, they do not offer compute resources for free. Google offers a micro instance and I will make a tutorial covering that too.
 
-[**Note:** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
+**Note:** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
 {: .notice--info}
 
 ## Creating the Oracle Cloud Account
@@ -112,16 +112,16 @@ In this section you create three scripts: one for authentication, one to fetch d
 #### Add Authentication
 In this section, you add API key based authentication. First, you set up a directory for all your Terraform scripts. Then you add a provider script so your Oracle Cloud Infrastructure account can authenticate the scripts running from this directory.
 
-In your $HOME directory, create a directory called tf-provider and change to that directory.
+In your `$HOME` directory, create a directory called `tf-provider` and change to that directory.
 ```shell
 mkdir tf-provider
 cd tf-provider
 ```
-Create a file called provider.tf.
-Add the following code to provider.tf
+Create a file called `provider.tf`.
+Add the following code to `provider.tf`
 Replace the fields with brackets, with the information you gathered in the previous step.
 Make sure you add quotations around string values.
-```shell
+```terraform
 provider "oci" {
   tenancy_ocid = "<tenancy-ocid>"
   user_ocid = "<user-ocid>" 
@@ -130,35 +130,26 @@ provider "oci" {
   region = "<region-identifier>"
 }
 ```
-Save the provider.tf file.
+Save the `provider.tf` file.
 
 #### Add a Data Source
 
 In this section, you fetch a list of the availability domains in your tenancy.
 
-In the tf-provider directory, create a file called availability-domains.tf.
-Add the following code to availability-domains.tf.
-Replace the field with brackets, with the information you gathered in section 3.
-Copy
+In the `tf-provider` directory, create a file called `availability-domains.tf`.
+Add the following code to `availability-domains.tf`.
+Replace the field with brackets, with the information you gathered in previous section.
+
 Source from https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains
+{: .notice--info}
 
- <tenancy-ocid> is the compartment OCID for the root compartment.
-Use <tenancy-ocid> for the compartment OCID.
-
+`<tenancy-ocid>` is the compartment OCID for the root compartment.
+Use `<tenancy-ocid>` for the compartment OCID.
+```terraform
 data "oci_identity_availability_domains" "ads" {
   compartment_id = "<tenancy-ocid>"
 }
- Note
-
-The data source gets a list of all availability domains in your entire tenancy. The tenancy OCID is the compartment OCID for the root compartment. Providing a specific "<compartment-ocid>" or your "<tenancy-ocid>" will have the same output.
- Note
+```
 
 Make sure provider.tf and availability-domains.tf are located in the same directory. Terraform can process all the files in a directory in their correct order, based on their relationship. Therefore, separate the provider and your other scripts for a modular approach and future reuse.
-Explanation
-Add Outputs
-3. Run Scripts
-In this section, you run your Terraform scripts. After your account authenticates the scripts, Terraform fetches your tenancy's availability domains.
 
-Initialize
-Plan
-Apply
