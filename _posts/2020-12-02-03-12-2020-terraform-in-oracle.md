@@ -140,7 +140,7 @@ In the `tf-provider` directory, create a file called `availability-domains.tf`.
 Add the following code to `availability-domains.tf`.
 Replace the field with brackets, with the information you gathered in previous section.
 
-Source from https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains
+Source from <https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains>
 {: .notice--info}
 
 `<tenancy-ocid>` is the compartment OCID for the root compartment.
