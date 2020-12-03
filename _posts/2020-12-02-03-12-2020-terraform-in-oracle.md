@@ -9,7 +9,6 @@ summary: [A simple guide for provisioning infrastructure with Terraform in Oracl
 toc: true
 toc_label: "Content"
 header:
-  image: /assets/images/cloud2.jpg
   og_image: /assets/images/cloud2.jpg
 ---
 
