@@ -53,4 +53,53 @@ After finishing installing Terraform, you need to wait for the activation of the
 ## Setting Up Terraform For Oracle
 
 ### Create RSA Keys
+Create RSA keys for API signing into your Oracle Cloud Infrastructure account.
 
+Open a terminal window.
+Make an .oci directory.
+```shell
+mkdir $HOME/.oci
+```
+Generate a 2048-bit private key in a PEM format:
+```shell
+openssl genrsa -out $HOME/.oci/<your-rsa-key-name>.pem 2048
+```
+Change permissions, so only you can read and write to the private key file:
+```shell
+chmod 600 $HOME/.oci/<your-rsa-key-name>.pem
+```
+Generate the public key:
+```shell
+openssl rsa -pubout -in $HOME/.oci/<your-rsa-key-name>.pem -out $HOME/.oci/<your-rsa-key-name>_public.pem
+```
+Copy the public key.
+In the terminal, enter:
+```shell
+cat $HOME/.oci/<your-rsa-key-name>_public.pem
+```
+Add the public key to your Oracle user account.
+From your user avatar, go to User Settings.
+Click API Keys.
+Click Add Public Key.
+Select Paste Public Keys.
+Paste value from previous step, including the lines with BEGIN PUBLIC KEY and END PUBLIC KEY
+Click Add.
+You have now set up the RSA keys to connect to your Oracle Cloud Infrastructure account.
+
+### Gather Required Information
+Prepare the information you need to authenticate your Terraform scripts and copy them into your notepad.
+
+Collect the following credential information from the Oracle Cloud Infrastructure Console.
+Tenancy OCID:`<tenancy-ocid>`
+From your user avatar, go to Tenancy:`<your-tenancy>` and copy OCID.
+User OCID: `<user-ocid>`
+From your user avatar, go to User Settings and copy OCID.
+Fingerprint: `<fingerprint>`
+From your user avatar, go to User Settings and click API Keys.
+Copy the fingerprint associated with the RSA public key you made in section 2. The format is: xx:xx:xx...xx.
+Region: `<region-identifier>`
+From the top navigation bar, find your region.
+Find your region's `<region-identifier>`from Regions and Availability Domains. Example: us-ashburn-1.
+Collect the following information from your environment.
+Private Key Path: `<rsa-private-key-path>`
+Path to the RSA private key you made in section 2. Example: `$HOME/.oci/<your-rsa-key-name>.pem`.
