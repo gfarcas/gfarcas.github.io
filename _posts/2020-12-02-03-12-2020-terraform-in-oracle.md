@@ -16,30 +16,41 @@ You might ask, why I have chosen Oracle Cloud for this tutorial? Well, I have do
 - Oracle Cloud Free Tier offers (at the time of the article) 2 Compute virtual machines with 1/8 OCPU and 1 GB memory each.
 Even though AWS and Azure have always free tiers, they do not offer compute resources for free. Google offers a micro instance and I will make a tutorial covering that too.
 
-## Creating the Oracle Cloud account
+The presented tutorial here is based on the official documentation from Oracle: [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
+
+## Creating the Oracle Cloud Account
 
 First of all you need to create an Oracle Cloud account. For this, you need to go to the [Signup page](https://signup.oraclecloud.com/) of Oracle. 
 You will be required to enter a payment card in the profile for verification purposes. If you use only Always Free resources after the free trial has ended, you shouldn't worry about costs as they are as the name suggests, always free. In our exampe we will use the always free compute instance and the vcn network. 
 
 Once you have finished following all the steps from the signup page, you will be waiting on the activation which might take from minutes to hours. While waiting on the activation, you can proceed with the next step
 
-## Installing terraform locally
+## Installing Terraform Locally
 
   You can install Terraform on Windows, Mac, or Linux. You can find the instalation instructions here: [Terraform Cli Instalation](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-  In my personal case, I use disposable virtual machines for these types of activities in order to keep my environment clean. For this tutorial I have used a CentOS 8 VirtualBox VM and the following commands installed Terraform succesfully. 
+  In my personal case, I use disposable virtual machines for these types of activities in order to keep my environment clean. For this tutorial I have used a CentOS 8 VirtualBox VM and used the following guide: [Official Oracle Terraform guide](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
 
-Install yum-config-manager to manage your repositories. 
+
+Download Terraform zip file:
 ```shell
-sudo yum install -y yum-utils
+https://releases.hashicorp.com/terraform/0.14.0/terraform_0.14.0_linux_amd64.zip
 ```
-Use yum-config-manager to add the official HashiCorp Linux repository.
+
+Unzip the file:
 ```shell
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`
+unzip terraform_0.14.0_linux_amd64.zip
 ```
-Install.
+Move the folder to `/usr/local/bin`
 ```shell
-sudo yum -y install terraform
+sudo mv terraform /usr/local/bin
+```
+Check the Terraform version:
+```shell
+terraform -v
 ```
 After finishing installing Terraform, you need to wait for the activation of the Oracle account before continuing on the next step
 
-To be continued...
+## Setting Up Terraform For Oracle
+
+### Create RSA Keys
+
