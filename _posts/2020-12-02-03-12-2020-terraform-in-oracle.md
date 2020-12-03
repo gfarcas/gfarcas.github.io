@@ -170,6 +170,10 @@ The command generates some random text art used to generate the keys. When compl
 
 The private key file: <your-ssh-key-name>
 The public key file: <your-ssh-key-name>.pub
+Make sure to change the permisions to the oracle.pub file with the following command or else ssh will tell that it's too open:
+```shell
+chmod 600 <your-ssh-key-name>.pub
+```
 You will use these files to connect to your Compute instance.
 
 #### Add Outputs
@@ -220,7 +224,7 @@ output "time-created" {
 ```
 #### Compute Instance code
 
-And last but not least, the compute instance code, please replace the placeholders with the information gathered in the previous steps
+And last but not least, the compute instance code, please replace the placeholders with the information gathered in the previous steps:
 ```terraform
 resource "oci_core_instance" "oracle1" {
     # Required
@@ -243,35 +247,32 @@ resource "oci_core_instance" "oracle1" {
         subnet_id = <subnet ocid>
     }
     metadata = {
-      #write the path the ssh public key that you generated in the previous steps, in this example it was on /root/.ssh/id_rsa.pub
-        ssh_authorized_keys = file("/root/.ssh/id_rsa.pub") 
-} 
-    preserve_boot_volume = false
-}
-resource "oci_core_instance" "oracle2" {
-    # Required
-    availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
-    # Replace <tenancy-ocid> with the information gathered at the Gather Required Information step
-    compartment_id = <tenancy-ocid>
-    #VM.Standard.E2.1.Micro is the type of VM which is free indefinitely according to Oracle offer at the time of this article
-    shape = "VM.Standard.E2.1.Micro"
-    # Choose a linux image from the your region from the list available here and copy the ocid to the source_id below https://docs.cloud.oracle.com/en-us/iaas/images/image/c7107f6a-5b95-400a-b8b4-1798dc11dc27/
-    source_details {
-        source_id = <source ocid>
-        source_type = "image"
-    }
-
-    # Optional
-    display_name = "oracle2"
-    create_vnic_details {
-        assign_public_ip = true
-        #Copy the subnet ocid from the VCN network 
-        subnet_id = <subnet ocid>
-    }
-    metadata = {
-      #write the path the ssh public key that you generated in the previous steps, in this example it was on /root/.ssh/id_rsa.pub
-        ssh_authorized_keys = file("/root/.ssh/id_rsa.pub") 
+      #write the path the ssh public key that you generated in the previous steps, in this example it was on /root/terraform-tutorial/oracle.pub
+        ssh_authorized_keys = file("/root/terraform-tutorial/oracle.pub") 
 } 
     preserve_boot_volume = false
 }
 ```
+## Running the Scripts
+
+Run the following init command from the terraform-tutorial folder:
+```shell
+terraform init
+```
+If everything went succesfully you should see the following output: `Terraform has been successfully initialized!`
+Next command that we want to run is:
+```shell
+terraform plan
+```
+This will output to the console all the changes that the next command, `terraform apply` will make.
+The last command is:
+```shell
+terraform apply
+```
+This command will ask you to write yes for confirmation. If everything worked as planned, in a few minutes you should now see resources appearing in your Oracle Cloud web console and you should also see the output in your console with the details of the newly created resources.
+You can connect to the public IP specified in the output with the following command:
+```shell
+ssh -i /root/tf-compute/oracle opc@<public IP from terraform output>
+```
+You are now connected to your free cloud VM created with Terraform in Oracle Cloud!
+![Alright Alright Alright]({{ site.baseurl }}/iassets/images/mathew.gif "")
