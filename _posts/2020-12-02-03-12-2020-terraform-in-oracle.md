@@ -157,5 +157,5 @@ Make sure provider.tf and availability-domains.tf are located in the same direct
 #### Create a Virtual Cloud Network
 In this step, we will manually create the virtual cloud network on which th VMs will reside, if you already have a default one in Networking -> Virtual Cloud Network, you can copy the ocid ID from that one, if not, please follow the following short video on how to create one, with the mention to **uncheck** USE DNS HOSTNAMES IN THIS VCN
 
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=lxQYHuvipx8&feature=emb_logo" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lxQYHuvipx8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 #### Add Outputs
