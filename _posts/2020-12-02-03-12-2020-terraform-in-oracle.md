@@ -16,7 +16,7 @@ You might ask, why I have chosen Oracle Cloud for this tutorial? Well, I have do
 - Oracle Cloud Free Tier offers (at the time of the article) 2 Compute virtual machines with 1/8 OCPU and 1 GB memory each.
 Even though AWS and Azure have always free tiers, they do not offer compute resources for free. Google offers a micro instance and I will make a tutorial covering that too.
 
-The presented tutorial here is based on the official documentation from Oracle: [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
+The presented tutorial here is based on the official tutorial from Oracle: [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm){: .notice--info}
 
 ## Creating the Oracle Cloud Account
 
@@ -112,15 +112,15 @@ In this section you create three scripts: one for authentication, one to fetch d
 In this section, you add API key based authentication. First, you set up a directory for all your Terraform scripts. Then you add a provider script so your Oracle Cloud Infrastructure account can authenticate the scripts running from this directory.
 
 In your $HOME directory, create a directory called tf-provider and change to that directory.
-Copy
+```shell
 mkdir tf-provider
-Copy
 cd tf-provider
+```
 Create a file called provider.tf.
 Add the following code to provider.tf
-Replace the fields with brackets, with the information you gathered in section 3.
+Replace the fields with brackets, with the information you gathered in the previous step.
 Make sure you add quotations around string values.
-Copy
+```shell
 provider "oci" {
   tenancy_ocid = "<tenancy-ocid>"
   user_ocid = "<user-ocid>" 
@@ -128,23 +128,21 @@ provider "oci" {
   fingerprint = "<fingerprint>"
   region = "<region-identifier>"
 }
+```
 Save the provider.tf file.
-Explanation
+
 #### Add a Data Source
+
 In this section, you fetch a list of the availability domains in your tenancy.
-
-To fetch data you use a data source. A data source is similar to the GET option in REST APIs. You use it to get data.
-
-By fetching data, you confirm that your Oracle Cloud Infrastructure account can authenticate your provider.tf script and you can get information from your account.
 
 In the tf-provider directory, create a file called availability-domains.tf.
 Add the following code to availability-domains.tf.
 Replace the field with brackets, with the information you gathered in section 3.
 Copy
-# Source from https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains
+Source from https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains
 
-# <tenancy-ocid> is the compartment OCID for the root compartment.
-# Use <tenancy-ocid> for the compartment OCID.
+ <tenancy-ocid> is the compartment OCID for the root compartment.
+Use <tenancy-ocid> for the compartment OCID.
 
 data "oci_identity_availability_domains" "ads" {
   compartment_id = "<tenancy-ocid>"
