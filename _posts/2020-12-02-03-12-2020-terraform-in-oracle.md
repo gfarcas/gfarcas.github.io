@@ -19,6 +19,8 @@ Even though AWS and Azure have always free tiers, they do not offer compute reso
 **Note:** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
 {: .notice--info}
 
+You also might think, why would write this code since creating a single VM manually would probbalby be faster? But you would be wrong. This article is just an example, once oyu apply infrastructure as a code concept on a much broader aspect, in day to day work, then you would see the real avantages
+
 ## Creating the Oracle Cloud Account
 
 First of all you need to create an Oracle Cloud account. For this, you need to go to the [Signup page](https://signup.oraclecloud.com/) of Oracle. 
@@ -152,4 +154,8 @@ data "oci_identity_availability_domains" "ads" {
 ```
 
 Make sure provider.tf and availability-domains.tf are located in the same directory. Terraform can process all the files in a directory in their correct order, based on their relationship. Therefore, separate the provider and your other scripts for a modular approach and future reuse.
+#### Create a Virtual Cloud Network
+In this step, we will manually create the virtual cloud network on which th VMs will reside, if you already have a default one in Networking -> Virtual Cloud Network, you can copy the ocid ID from that one, if not, please follow the following short video on how to create one, with the mention to **uncheck** USE DNS HOSTNAMES IN THIS VCN
 
+<iframe width="640" height="360" src="https://www.youtube.com/watch?v=lxQYHuvipx8&feature=emb_logo" frameborder="0" allowfullscreen></iframe>
+#### Add Outputs
