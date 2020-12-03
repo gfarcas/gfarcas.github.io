@@ -4,7 +4,7 @@ date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
 author: George Farcas
-tags: [oracle, oci ,terraform]
+tags: [oracle, oci ,terraform, provisioning]
 summary: [A simple guide for provisioning infrastructure with Terraform in Oracle Cloud Infrastructure]
 toc: true
 toc_label: "Content"
