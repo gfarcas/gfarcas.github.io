@@ -21,7 +21,7 @@ Even though AWS and Azure have always free tiers, they do not offer compute reso
 **Note:** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
 {: .notice--info}
 
-You also might think, why would write this code since creating a single VM manually would probbalby be faster? But you would be wrong. This article is just an example, once oyu apply infrastructure as a code concept on a much broader aspect, in day to day work, then you would see the real avantages
+You also might think, why would write this code since creating a single VM manually would probbalby be faster? But you would be wrong. This article is just an example, once you apply infrastructure as a code concept on a much broader aspect, in day to day work, then you would see the real avantages
 
 ## Creating the Oracle Cloud Account
 
