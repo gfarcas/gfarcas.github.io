@@ -104,3 +104,62 @@ Find your region's `<region-identifier>`from Regions and Availability Domains. E
 Collect the following information from your environment.
 - Private Key Path: `<rsa-private-key-path>`
 Path to the RSA private key you made in section 2. Example: `$HOME/.oci/<your-rsa-key-name>.pem`.
+
+### Create Scripts
+In this section you create three scripts: one for authentication, one to fetch data from your account, and one to print outputs.
+
+#### Add Authentication
+In this section, you add API key based authentication. First, you set up a directory for all your Terraform scripts. Then you add a provider script so your Oracle Cloud Infrastructure account can authenticate the scripts running from this directory.
+
+In your $HOME directory, create a directory called tf-provider and change to that directory.
+Copy
+mkdir tf-provider
+Copy
+cd tf-provider
+Create a file called provider.tf.
+Add the following code to provider.tf
+Replace the fields with brackets, with the information you gathered in section 3.
+Make sure you add quotations around string values.
+Copy
+provider "oci" {
+  tenancy_ocid = "<tenancy-ocid>"
+  user_ocid = "<user-ocid>" 
+  private_key_path = "<rsa-private-key-path>"
+  fingerprint = "<fingerprint>"
+  region = "<region-identifier>"
+}
+Save the provider.tf file.
+Explanation
+#### Add a Data Source
+In this section, you fetch a list of the availability domains in your tenancy.
+
+To fetch data you use a data source. A data source is similar to the GET option in REST APIs. You use it to get data.
+
+By fetching data, you confirm that your Oracle Cloud Infrastructure account can authenticate your provider.tf script and you can get information from your account.
+
+In the tf-provider directory, create a file called availability-domains.tf.
+Add the following code to availability-domains.tf.
+Replace the field with brackets, with the information you gathered in section 3.
+Copy
+# Source from https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domains
+
+# <tenancy-ocid> is the compartment OCID for the root compartment.
+# Use <tenancy-ocid> for the compartment OCID.
+
+data "oci_identity_availability_domains" "ads" {
+  compartment_id = "<tenancy-ocid>"
+}
+ Note
+
+The data source gets a list of all availability domains in your entire tenancy. The tenancy OCID is the compartment OCID for the root compartment. Providing a specific "<compartment-ocid>" or your "<tenancy-ocid>" will have the same output.
+ Note
+
+Make sure provider.tf and availability-domains.tf are located in the same directory. Terraform can process all the files in a directory in their correct order, based on their relationship. Therefore, separate the provider and your other scripts for a modular approach and future reuse.
+Explanation
+Add Outputs
+3. Run Scripts
+In this section, you run your Terraform scripts. After your account authenticates the scripts, Terraform fetches your tenancy's availability domains.
+
+Initialize
+Plan
+Apply
