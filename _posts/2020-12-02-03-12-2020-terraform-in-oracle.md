@@ -16,7 +16,8 @@ You might ask, why I have chosen Oracle Cloud for this tutorial? Well, I have do
 - Oracle Cloud Free Tier offers (at the time of the article) 2 Compute virtual machines with 1/8 OCPU and 1 GB memory each.
 Even though AWS and Azure have always free tiers, they do not offer compute resources for free. Google offers a micro instance and I will make a tutorial covering that too.
 
-**Note** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm){: .notice--info}
+[**Note:** The presented tutorial here is based on the official tutorial from Oracle [Terraform: Set Up OCI Terraform](https://docs.cloud.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-provider/01-summary.htm)
+{: .notice--info}
 
 ## Creating the Oracle Cloud Account
 
