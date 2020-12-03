@@ -8,6 +8,9 @@ tags: [oracle, oci ,terraform]
 summary: [A simple guide for provisioning infrastructure with Terraform in Oracle Cloud Infrastructure]
 toc: true
 toc_label: "Content"
+header:
+  image: /assets/images/cloud2.jpg
+  og_image: /assets/images/cloud2.jpg
 ---
 
 One of the domains where automation can save a lot of time is infrastructure provisioning. In many cases, manualy provisioning infrastructure can take hours and it is prone to user error on each iteration. Here is where Terraform from HashiCorp comes handy. You can create, manage, and destroy the resources from the terraform code. Terraform has countless provider API integrations as well as modules where several resources are used toghether.
