@@ -90,16 +90,17 @@ You have now set up the RSA keys to connect to your Oracle Cloud Infrastructure 
 Prepare the information you need to authenticate your Terraform scripts and copy them into your notepad.
 
 Collect the following credential information from the Oracle Cloud Infrastructure Console.
-Tenancy OCID:`<tenancy-ocid>`
+
+- Tenancy OCID:`<tenancy-ocid>`
 From your user avatar, go to Tenancy:`<your-tenancy>` and copy OCID.
-User OCID: `<user-ocid>`
+- User OCID: `<user-ocid>`
 From your user avatar, go to User Settings and copy OCID.
-Fingerprint: `<fingerprint>`
+- Fingerprint: `<fingerprint>`
 From your user avatar, go to User Settings and click API Keys.
 Copy the fingerprint associated with the RSA public key you made in section 2. The format is: xx:xx:xx...xx.
-Region: `<region-identifier>`
+- Region: `<region-identifier>`
 From the top navigation bar, find your region.
 Find your region's `<region-identifier>`from Regions and Availability Domains. Example: us-ashburn-1.
 Collect the following information from your environment.
-Private Key Path: `<rsa-private-key-path>`
+- Private Key Path: `<rsa-private-key-path>`
 Path to the RSA private key you made in section 2. Example: `$HOME/.oci/<your-rsa-key-name>.pem`.
