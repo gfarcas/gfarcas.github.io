@@ -114,10 +114,10 @@ In this section you create three scripts: one for authentication, one to fetch d
 #### Add Authentication
 In this section, you add API key based authentication. First, you set up a directory for all your Terraform scripts. Then you add a provider script so your Oracle Cloud Infrastructure account can authenticate the scripts running from this directory.
 
-In your `$HOME` directory, create a directory called `tf-provider` and change to that directory.
+In your `$HOME` directory, create a directory called `terraform-tutorial` and change to that directory.
 ```shell
-mkdir tf-provider
-cd tf-provider
+mkdir terraform-tutorial
+cd terraform-tutorial
 ```
 Create a file called `provider.tf`.
 Add the following code to `provider.tf`
@@ -138,7 +138,7 @@ Save the `provider.tf` file.
 
 In this section, you fetch a list of the availability domains in your tenancy.
 
-In the `tf-provider` directory, create a file called `availability-domains.tf`.
+In the `terraform-tutorial` directory, create a file called `availability-domains.tf`.
 Add the following code to `availability-domains.tf`.
 Replace the field with brackets, with the information you gathered in previous section.
 
@@ -155,7 +155,121 @@ data "oci_identity_availability_domains" "ads" {
 
 Make sure provider.tf and availability-domains.tf are located in the same directory. Terraform can process all the files in a directory in their correct order, based on their relationship. Therefore, separate the provider and your other scripts for a modular approach and future reuse.
 #### Create a Virtual Cloud Network
-In this step, we will manually create the virtual cloud network on which th VMs will reside, if you already have a default one in Networking -> Virtual Cloud Network, you can copy the ocid ID from that one, if not, please follow the following short video on how to create one, with the mention to **uncheck** USE DNS HOSTNAMES IN THIS VCN
+In this step, we will manually create the virtual cloud network on which th VMs will reside, if you already have a default one in Networking -> Virtual Cloud Network, you can copy the ocid ID from that one, if not, please follow the following short video from oracle on how to create one, with the mention to **uncheck** USE DNS HOSTNAMES IN THIS VCN
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lxQYHuvipx8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Create SSH Encryption Keys
+Create ssh encryption keys you can use to log into your VM.
+```shell
+ssh-keygen -t rsa -N "" -b 2048 -C <your-ssh-key-name> -f <your-ssh-key-name>
+```
+The command generates some random text art used to generate the keys. When complete, you should have two files:
+
+The private key file: <your-ssh-key-name>
+The public key file: <your-ssh-key-name>.pub
+You will use these files to connect to your Compute instance.
+
 #### Add Outputs
+
+Outputs are used to configure what information is returned back from the script once it has ran succesfully. For this case we will use the following code:
+```terraform
+output "name-of-first-availability-domain" {
+  value = data.oci_identity_availability_domains.ads.availability_domains[0].name
+}
+
+# Outputs for compute instance
+
+output "public-ip-for-compute-instance" {
+  value = oci_core_instance.oracle1.public_ip
+}
+
+output "instance-name" {
+  value = oci_core_instance.oracle1.display_name
+}
+
+output "instance-OCID" {
+  value = oci_core_instance.oracle1.id
+}
+
+output "instance-region" {
+  value = oci_core_instance.oracle1.region
+}
+
+output "instance-shape" {
+  value = oci_core_instance.oracle1.shape
+}
+
+output "instance-state" {
+  value = oci_core_instance.oracle1.state
+}
+
+output "instance-OCPUs" {
+  value = oci_core_instance.oracle1.shape_config[0].ocpus
+}
+
+output "instance-memory-in-GBs" {
+  value = oci_core_instance.oracle1.shape_config[0].memory_in_gbs
+}
+
+output "time-created" {
+  value = oci_core_instance.oracle1.time_created
+}
+```
+#### Compute Instance code
+
+And last but not least, the compute instance code, please replace the placeholders with the information gathered in the previous steps
+```terraform
+resource "oci_core_instance" "oracle1" {
+    # Required
+    availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+    # Replace <tenancy-ocid> with the information gathered at the Gather Required Information step
+    compartment_id = <tenancy-ocid>
+    #VM.Standard.E2.1.Micro is the type of VM which is free indefinitely according to Oracle offer at the time of this article
+    shape = "VM.Standard.E2.1.Micro"
+    # Choose a linux image from the your region from the list available here and copy the ocid to the source_id below https://docs.cloud.oracle.com/en-us/iaas/images/image/c7107f6a-5b95-400a-b8b4-1798dc11dc27/
+    source_details {
+        source_id = <source ocid>
+        source_type = "image"
+    }
+
+    # Optional
+    display_name = "oracle1"
+    create_vnic_details {
+        assign_public_ip = true
+        #Copy the subnet ocid from the VCN network 
+        subnet_id = <subnet ocid>
+    }
+    metadata = {
+      #write the path the ssh public key that you generated in the previous steps, in this example it was on /root/.ssh/id_rsa.pub
+        ssh_authorized_keys = file("/root/.ssh/id_rsa.pub") 
+} 
+    preserve_boot_volume = false
+}
+resource "oci_core_instance" "oracle2" {
+    # Required
+    availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+    # Replace <tenancy-ocid> with the information gathered at the Gather Required Information step
+    compartment_id = <tenancy-ocid>
+    #VM.Standard.E2.1.Micro is the type of VM which is free indefinitely according to Oracle offer at the time of this article
+    shape = "VM.Standard.E2.1.Micro"
+    # Choose a linux image from the your region from the list available here and copy the ocid to the source_id below https://docs.cloud.oracle.com/en-us/iaas/images/image/c7107f6a-5b95-400a-b8b4-1798dc11dc27/
+    source_details {
+        source_id = <source ocid>
+        source_type = "image"
+    }
+
+    # Optional
+    display_name = "oracle2"
+    create_vnic_details {
+        assign_public_ip = true
+        #Copy the subnet ocid from the VCN network 
+        subnet_id = <subnet ocid>
+    }
+    metadata = {
+      #write the path the ssh public key that you generated in the previous steps, in this example it was on /root/.ssh/id_rsa.pub
+        ssh_authorized_keys = file("/root/.ssh/id_rsa.pub") 
+} 
+    preserve_boot_volume = false
+}
+```
