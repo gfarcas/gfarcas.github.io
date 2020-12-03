@@ -275,4 +275,4 @@ You can connect to the public IP specified in the output with the following comm
 ssh -i /root/tf-compute/oracle opc@<public IP from terraform output>
 ```
 You are now connected to your free cloud VM created with Terraform in Oracle Cloud!
-![Alright Alright Alright]({{ site.baseurl }}/iassets/images/mathew.gif "")
+![Alright Alright Alright](/assets/images/mathew.gif)
