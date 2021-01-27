@@ -8,8 +8,6 @@ tags: [terminal, linux, zsh]
 summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome prompts? Follow this guide to make your terminal beautiful and also check on some "beautified" day to day utilies alternatives ]
 toc: true
 toc_label: "Content"
-header:
-  og_image: "/assets/images/cloud2.jpg"
 ---
 
 ## Start with the terminal
