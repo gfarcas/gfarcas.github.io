@@ -33,6 +33,4 @@ You cand find the instalation instructions at [exa GitHub page](https://github.c
 {:refdef: style="text-align: center;"}
 ![bat](https://camo.githubusercontent.com/7b7c397acc5b91b4c4cf7756015185fe3c5f700f70d256a212de51294a0cf673/68747470733a2f2f696d6775722e636f6d2f724773646e44652e706e67)
 {: refdef}
-You cand find the instalation instructions at [bat GitHub page](https://github.com/sharkdp/bat
-)
-
+You cand find the instalation instructions at [bat GitHub page](https://github.com/sharkdp/bat)
