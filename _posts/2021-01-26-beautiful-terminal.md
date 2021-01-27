@@ -10,7 +10,7 @@ toc_label: "Content"
 header:
   og_image: "/assets/images/terminal.png"
 ---
-{% raw %}<img src="{{ site.url }}{{ site.baseurl }}/assets/images/terminal.png" alt="">{% endraw %}
+{% raw %}<img src="{{ site.url }}{{ site.baseurl }}/assets/images/terminal.png" alt="" class="full">{% endraw %}
 ## Start with the terminal
 In order to have the above terminal prompt, we need to install the `zsh` shell and then install the [Powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k) 
 
