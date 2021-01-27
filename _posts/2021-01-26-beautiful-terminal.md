@@ -4,6 +4,7 @@ date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
 author: George Farcas
+tags: [terminal, linux, zsh]
 toc: true
 toc_label: "Content"
 header:
