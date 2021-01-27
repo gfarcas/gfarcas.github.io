@@ -5,6 +5,7 @@ categories:
   - Blog
 author: George Farcas
 tags: [terminal, linux, zsh]
+summary: [Who said terminals need to be monochrome? Follow this guide for a fancy colorful terminal and some modern alternatives to common utilities]
 toc: true
 toc_label: "Content"
 header:
