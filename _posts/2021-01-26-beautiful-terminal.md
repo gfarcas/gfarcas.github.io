@@ -5,7 +5,7 @@ categories:
   - Blog
 author: George Farcas
 tags: [oracle, oci ,terraform, provisioning]
-summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome prompts? Follow this guide to make your terminal beautiful and also check on some "beautified" day to day utilies alternatives]
+summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome promptss]
 toc: true
 toc_label: "Content"
 header:
