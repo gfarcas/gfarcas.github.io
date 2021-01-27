@@ -1,6 +1,6 @@
 ---
 title: Beautiful Terminal
-date: 2021-01-26T19:34:30-04:00
+date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
 author: George Farcas
