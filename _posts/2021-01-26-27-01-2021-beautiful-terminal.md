@@ -1,5 +1,5 @@
 ---
-title: Beautiful Terminal
+title: Provisioning Compute with Terraform in Oracle Cloud
 date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
