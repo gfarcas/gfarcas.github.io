@@ -6,12 +6,9 @@ categories:
 author: George Farcas
 tags: [terminal, linux, zsh]
 summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome prompts? Follow this guide to make your terminal beautiful and also check on some "beautified" day to day utilies alternatives ]
-toc: true
-toc_label: "Content"
 ---
 
 ## Start with the terminal
-image------
 In order to have the above terminal prompt, we need to install the `zsh` shell and then install the [Powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k) 
 
 Install `zsh`:
