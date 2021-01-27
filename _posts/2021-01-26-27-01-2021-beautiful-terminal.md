@@ -1,11 +1,15 @@
 ---
-title: "Beautiful Terminal"
-date: 2021-01-26T19:00:00-04:00
+title: Provisioning Compute with Terraform in Oracle Cloud
+date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
 author: George Farcas
-tags: [terminal, linux, zsh]
-summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome prompts? Follow this guide to make your terminal beautiful]
+tags: [oracle, oci ,terraform, provisioning]
+summary: [A simple guide for provisioning infrastructure with Terraform in Oracle Cloud Infrastructure]
+toc: true
+toc_label: "Content"
+header:
+  og_image: "/assets/images/cloud2.jpg"
 ---
 
 ## Start with the terminal
