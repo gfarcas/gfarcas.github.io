@@ -1,5 +1,5 @@
 ---
-title: Beautiful Terminal
+title: "Beautiful Terminal"
 date: 2021-01-26T19:00:00-04:00
 categories:
   - Blog
