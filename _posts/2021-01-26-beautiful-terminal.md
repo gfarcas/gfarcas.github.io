@@ -5,13 +5,13 @@ categories:
   - Blog
 author: George Farcas
 tags: [terminal, linux, zsh]
-summary: [Who said terminals need to be monochrome? Follow this guide for a fancy colorful terminal and some modern alternatives to common utilities]
 toc: true
 toc_label: "Content"
 header:
   image: "/assets/images/terminal.png"
   og_image: "/assets/images/terminal.png"
 ---
+Who said terminals need to be monochrome? Follow this guide for a fancy colorful terminal and some modern alternatives to common utilities
 ## Start with the terminal
 In order to have the above terminal prompt, we need to install the `zsh` shell and then install the [Powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k) 
 
