@@ -4,8 +4,6 @@ date: 2020-12-05T19:34:30-04:00
 categories:
   - Blog
 author: George Farcas
-tags: []
-summary: [One of my coleagues terminal caught my eyes these days. Who said terminals need to be monochrome prompts?]
 toc: true
 toc_label: "Content"
 header:
