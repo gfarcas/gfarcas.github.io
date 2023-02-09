@@ -1,5 +1,16 @@
+---
+title: Installing Prometheus in a Kubernetes Cluster
+date: 2023-02-09T19:34:30-04:00
+categories:
+  - Blog
+author: George Farcas
+tags: [prometheus, linux, k8s]
+toc: true
+toc_label: "Content"
+---
 # Installing Prometheus in a Kubernetes Cluster
-###Prometheus is an open-source monitoring and alerting system widely used in cloud native environments. In this article, we will cover the steps to install Prometheus in a Kubernetes cluster.
+
+### Prometheus is an open-source monitoring and alerting system widely used in cloud native environments. In this article, we will cover the steps to install Prometheus in a Kubernetes cluster.
 
 ### Prerequisites
 A running Kubernetes cluster
@@ -87,7 +98,7 @@ Apply the service definition using the following command:
 
 ```shell
 kubectl apply -f prometheus-service.yaml -n prometheus
-````
+```
 
 Once the service is created, you can access the Prometheus web UI by using the LoadBalancer IP address and port 9090.
 
