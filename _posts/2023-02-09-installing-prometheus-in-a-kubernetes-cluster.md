@@ -8,8 +8,6 @@ tags: [prometheus, linux, k8s]
 toc: true
 toc_label: "Content"
 ---
-# Installing Prometheus in a Kubernetes Cluster
-
 ### Prometheus is an open-source monitoring and alerting system widely used in cloud native environments. In this article, we will cover the steps to install Prometheus in a Kubernetes cluster.
 
 ### Prerequisites
