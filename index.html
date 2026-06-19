@@ -1,7 +1,478 @@
----
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>George Farcas — DevOps / DataOps Engineer</title>
+  <meta name="description" content="Senior DevOps and DataOps engineer with deep expertise in Kubernetes, cloud infrastructure, CI/CD, and observability.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #58a6ff; text-decoration: none; transition: color .2s; }
+    a:hover { color: #79c0ff; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,17,23,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid #21262d;
+      padding: 0 24px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .logo { font-weight: 700; font-size: .95rem; color: #f0f6fc; }
+    nav .nav-links { display: flex; gap: 20px; list-style: none; }
+    nav .nav-links a { font-size: .85rem; color: #8b949e; font-weight: 500; }
+    nav .nav-links a:hover { color: #f0f6fc; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 24px 60px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(56,139,253,.15), transparent);
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800; letter-spacing: -.03em;
+      background: linear-gradient(135deg, #f0f6fc 0%, #58a6ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .tagline {
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: #8b949e; margin-top: 8px; font-weight: 500;
+    }
+    .hero .contact-line {
+      margin-top: 20px; font-size: .9rem; color: #6e7681;
+      display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center;
+    }
+    .hero .contact-line span { color: #8b949e; }
+    .hero .contact-line a { font-weight: 500; }
+    .hero .cta-buttons { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero .cta-buttons a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 8px; font-size: .9rem; font-weight: 600;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: #238636; color: #fff !important;
+    }
+    .btn-primary:hover { background: #2ea043; }
+    .btn-secondary {
+      background: #21262d; color: #c9d1d9 !important; border: 1px solid #30363d;
+    }
+    .btn-secondary:hover { background: #30363d; border-color: #8b949e; }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 900px; margin: 0 auto; padding: 64px 24px;
+    }
+    .section-title {
+      font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: #58a6ff;
+      margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: #21262d;
+    }
+
+    /* ── Summary ── */
+    .summary-text {
+      font-size: 1rem; color: #c9d1d9; line-height: 1.7;
+      max-width: 780px;
+    }
+
+    /* ── Skills Grid ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 20px; }
+    .skill-card {
+      background: #161b22; border: 1px solid #21262d; border-radius: 10px;
+      padding: 18px 16px; transition: border-color .2s;
+    }
+    .skill-card:hover { border-color: #30363d; }
+    .skill-card .label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: #58a6ff; margin-bottom: 8px; }
+    .skill-card .items { font-size: .88rem; color: #c9d1d9; line-height: 1.7; }
+  .skill-card .items img { vertical-align: middle; margin-right: 2px; }
+
+    /* ── Experience Timeline ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .job {
+      position: relative; padding: 0 0 24px 24px;
+      border-left: 2px solid #21262d;
+    }
+    .job:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+    .job::before {
+      content: ''; position: absolute; left: -6px; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #58a6ff; border: 2px solid #0d1117;
+    }
+    .job .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+    .job .title { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; }
+    .job .company { font-size: .95rem; font-weight: 600; color: #58a6ff; }
+    .job .dates { font-size: .82rem; color: #6e7681; }
+    .job .location { font-size: .82rem; color: #6e7681; }
+    .job ul { margin: 10px 0 0; padding: 0; list-style: none; }
+    .job li {
+      font-size: .9rem; color: #c9d1d9; margin-bottom: 4px;
+      padding-left: 16px; position: relative; line-height: 1.55;
+    }
+    .job li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: #58a6ff; font-size: .75rem;
+    }
+
+    /* ── Certs / Education ── */
+    .certs-list, .edu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 10px; }
+    .cert-item, .edu-item {
+      background: #161b22; border: 1px solid #21262d; border-radius: 8px;
+      padding: 12px 16px; font-size: .9rem; color: #c9d1d9;
+    }
+    .cert-item img, .edu-item img { vertical-align: middle; margin-right: 4px; }
+    .edu-item .school { font-weight: 600; color: #f0f6fc; }
+    .edu-item .detail { font-size: .82rem; color: #6e7681; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid #21262d;
+      color: #6e7681; font-size: .82rem;
+    }
+    footer a { color: #8b949e; }
+    footer a:hover { color: #f0f6fc; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .section { padding: 40px 16px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .certs-list, .edu-list { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 80px; padding-bottom: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a href="#" class="logo">GF</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<header class="hero" id="top">
+  <div>
+    <h1>George Farcas</h1>
+    <p class="tagline">Senior DevOps / DataOps Engineer — Cloud, Data Infrastructure &amp; Automation</p>
+    <div class="contact-line">
+      <span>📧 <a href="mailto:gimsys@gmail.com">gimsys@gmail.com</a></span>
+      <span>📞 +40 742 994 419</span>
+      <span>📍 Cluj-Napoca, Romania</span>
+      <span><a href="https://linkedin.com/in/george-farcas" target="_blank">LinkedIn</a></span>
+      <span><a href="https://github.com/gfarcas" target="_blank">GitHub</a></span>
+    </div>
+    <div class="cta-buttons">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="https://github.com/gfarcas" target="_blank" class="btn-secondary">GitHub Profile</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── About / Summary ── -->
+<section class="section" id="about">
+  <h2 class="section-title">About</h2>
+  <div class="summary-text">
+    <p>Senior DevOps and DataOps engineer with 15+ years of progressive IT experience spanning on-premise infrastructure, private cloud, and multi-cloud environments. Deep expertise in Kubernetes orchestration, infrastructure as code (Terraform, Puppet), CI/CD pipeline automation (GitLab, Jenkins), and full-stack observability (Prometheus, Grafana).</p>
+    <p style="margin-top:8px">Proven track record of designing resilient cloud architectures on AWS, Tencent Cloud, Azure, and GCP; administering large-scale VMware clusters (8,000+ VMs); and automating enterprise workflows. Apache Airflow certified with hands-on DataOps experience bridging data infrastructure and AI/ML platform operations. ITIL and ISO 9001 qualified with a pragmatic, automation-first approach to reliability engineering.</p>
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<section class="section" id="skills">
+  <h2 class="section-title">Core Technologies &amp; Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="label">Cloud &amp; Infrastructure</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/amazonwebservices/58a6ff" height="15" alt="">
+        AWS,
+        <img src="https://cdn.simpleicons.org/tencentqq/58a6ff" height="15" alt="">
+        Tencent Cloud,
+        <img src="https://cdn.simpleicons.org/microsoftazure/58a6ff" height="15" alt="">
+        Azure,
+        <img src="https://cdn.simpleicons.org/googlecloud/58a6ff" height="15" alt="">
+        GCP,
+        <img src="https://cdn.simpleicons.org/vmware/58a6ff" height="15" alt="">
+        VMware vCenter (8,000+ VM clusters), Hybrid/On-Premise
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">Orchestration &amp; IaC</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/kubernetes/58a6ff" height="15" alt="">
+        Kubernetes,
+        <img src="https://cdn.simpleicons.org/docker/58a6ff" height="15" alt="">
+        Docker,
+        <img src="https://cdn.simpleicons.org/terraform/58a6ff" height="15" alt="">
+        Terraform,
+        <img src="https://cdn.simpleicons.org/puppet/58a6ff" height="15" alt="">
+        Puppet,
+        <img src="https://cdn.simpleicons.org/ansible/58a6ff" height="15" alt="">
+        Ansible,
+        <img src="https://cdn.simpleicons.org/helm/58a6ff" height="15" alt="">
+        Helm Charts
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">CI/CD &amp; Delivery</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/gitlab/58a6ff" height="15" alt="">
+        GitLab CI/CD,
+        <img src="https://cdn.simpleicons.org/jenkins/58a6ff" height="15" alt="">
+        Jenkins,
+        <img src="https://cdn.simpleicons.org/git/58a6ff" height="15" alt="">
+        Git, Artifact Management, Automated Pipelines
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">Data Infrastructure</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/apacheairflow/58a6ff" height="15" alt="">
+        Apache Airflow (certified),
+        <img src="https://cdn.simpleicons.org/apachekafka/58a6ff" height="15" alt="">
+        Kafka,
+        <img src="https://cdn.simpleicons.org/redis/58a6ff" height="15" alt="">
+        Redis/Sentinel,
+        <img src="https://cdn.simpleicons.org/fluentd/58a6ff" height="15" alt="">
+        Fluentd,
+        <img src="https://cdn.simpleicons.org/cloudera/58a6ff" height="15" alt="">
+        Cloudera,
+        <img src="https://cdn.simpleicons.org/sap/58a6ff" height="15" alt="">
+        SAP ME
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">Observability</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/prometheus/58a6ff" height="15" alt="">
+        Prometheus,
+        <img src="https://cdn.simpleicons.org/grafana/58a6ff" height="15" alt="">
+        Grafana,
+        <img src="https://cdn.simpleicons.org/loki/58a6ff" height="15" alt="">
+        Loki,
+        <img src="https://cdn.simpleicons.org/zabbix/58a6ff" height="15" alt="">
+        Zabbix,
+        <img src="https://cdn.simpleicons.org/veeam/58a6ff" height="15" alt="">
+        Veeam ONE
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">Automation &amp; Scripting</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/gnubash/58a6ff" height="15" alt="">
+        Bash,
+        <img src="https://cdn.simpleicons.org/powershell/58a6ff" height="15" alt="">
+        PowerShell,
+        <img src="https://cdn.simpleicons.org/vmware/58a6ff" height="15" alt="">
+        PowerCLI,
+        <img src="https://cdn.simpleicons.org/python/58a6ff" height="15" alt="">
+        Python
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="label">Systems &amp; Administration</div>
+      <div class="items">
+        <img src="https://cdn.simpleicons.org/linux/58a6ff" height="15" alt="">
+        Linux
+        (<img src="https://cdn.simpleicons.org/redhat/58a6ff" height="15" alt="">
+        RHEL/
+        <img src="https://cdn.simpleicons.org/centos/58a6ff" height="15" alt="">
+        CentOS/
+        <img src="https://cdn.simpleicons.org/ubuntu/58a6ff" height="15" alt="">
+        Ubuntu), Active Directory, Exchange,
+        <img src="https://cdn.simpleicons.org/samba/58a6ff" height="15" alt="">
+        Samba,
+        <img src="https://cdn.simpleicons.org/veeam/58a6ff" height="15" alt="">
+        Veeam Backup, Group Policy
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Experience ── -->
+<section class="section" id="experience">
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Senior DevOps / DataOps Engineer</span>
+        <span class="company">eMAG</span>
+        <span class="dates">Jul 2022 – Present (4 yrs+)</span>
+        <span class="location">Cluj-Napoca, Romania</span>
+      </div>
+      <ul>
+        <li>Architect and maintain multi-environment CI/CD pipelines in GitLab, enabling zero-downtime delivery across AWS and private-cloud deployments for Romania's largest e-commerce platform.</li>
+        <li>Drive infrastructure as code at scale using Terraform and Puppet, managing hundreds of cloud resources across hybrid environments.</li>
+        <li>Lead Kubernetes cluster deployments and cross-version migrations, improving container orchestration reliability.</li>
+        <li>Design and operate centralized observability with Prometheus stack and Grafana, reducing MTTD for critical incidents.</li>
+        <li>Enable LLM-powered agent workflows through MCP (Model Context Protocol) integration via an agent gateway, bridging AI infrastructure with platform operations.</li>
+        <li>Collaborate with data engineering teams on Airflow-based pipeline operations, supporting AI/ML initiatives.</li>
+        <li>Administer Cloudera private cloud operations, ensuring HA and performance for big data workloads.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">DevOps Engineer</span>
+        <span class="company">8x8</span>
+        <span class="dates">Nov 2020 – Jul 2022 (1 yr 9 mos)</span>
+        <span class="location">Cluj-Napoca, Romania</span>
+      </div>
+      <ul>
+        <li>Built and optimized CI/CD pipelines in Jenkins, accelerating release cycles for cloud communication services.</li>
+        <li>Provisioned AWS and VMware infrastructure through Terraform, reducing provisioning overhead and configuration drift.</li>
+        <li>Automated system configuration with Ansible across distributed Linux fleets.</li>
+        <li>Deployed and managed Kubernetes workloads — container lifecycle, scaling, and health monitoring.</li>
+        <li>Administered high-availability Redis/Sentinel clusters for caching and session management.</li>
+        <li>Centralized distributed logging with Fluentd for structured log aggregation.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Cloud Support Engineer</span>
+        <span class="company">Otava (formerly Neverfail Cloud)</span>
+        <span class="dates">Oct 2018 – Nov 2020 (2 yrs 2 mos)</span>
+        <span class="location">Cluj County, Romania</span>
+      </div>
+      <ul>
+        <li>Supported 20+ VMware clusters hosting over 8,000 VMs, ensuring 99.9% uptime for enterprise tenants.</li>
+        <li>Managed large-scale Veeam Backup &amp; Replication infrastructure with CloudConnect multi-tenant services.</li>
+        <li>Administered Clavister firewall configurations across customer environments.</li>
+        <li>Developed PowerShell and PowerCLI automation scripts for VM lifecycle and compliance.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Head of IT Department</span>
+        <span class="company">De'Longhi</span>
+        <span class="dates">Jan 2015 – Oct 2018 (3 yrs 10 mos)</span>
+        <span class="location">Cluj County, Romania</span>
+      </div>
+      <ul>
+        <li>Led IT operations and team for a major manufacturing site — budget, roadmap, and vendor management.</li>
+        <li>Deployed SAP Manufacturing Execution (SAP ME), digitizing shop-floor processes.</li>
+        <li>Oversaw enterprise monitoring stack (Zabbix, Syslog, Veeam ONE) across 200+ nodes.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Network &amp; System Administrator</span>
+        <span class="company">De'Longhi</span>
+        <span class="dates">Oct 2013 – Oct 2018 (5 yrs 1 mo)</span>
+        <span class="location">Cluj County, Romania</span>
+      </div>
+      <ul>
+        <li>Administered Active Directory and Exchange for 500+ users.</li>
+        <li>Managed VMware and Veeam backup operations for DR readiness.</li>
+        <li>Automated IT tasks through PowerShell scripting, reducing ticket volume.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Network &amp; Systems Administrator</span>
+        <span class="company">Fujikura Automotive Romania</span>
+        <span class="dates">Nov 2011 – Oct 2013 (2 yrs)</span>
+        <span class="location">Cluj County, Romania</span>
+      </div>
+      <ul>
+        <li>Managed Samba Directory services and Linux administration across the manufacturing site.</li>
+        <li>Automated Windows deployment and system configuration.</li>
+        <li>Provided level-2 helpdesk and network administration for production systems.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <span class="title">Hardware &amp; Communications Support Engineer</span>
+        <span class="company">SC EuroGsm SRL</span>
+        <span class="dates">Aug 2007 – Nov 2011 (4 yrs 4 mos)</span>
+        <span class="location">Cluj County, Romania</span>
+      </div>
+      <ul>
+        <li>Configured PBX telephony and multi-site network infrastructure.</li>
+        <li>Deployed Linux servers and provided remote support to branch locations.</li>
+        <li>Maintained hardware fleet and managed client SLAs.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Certifications ── -->
+<section class="section" id="certs">
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-list">
+    <div class="cert-item"><img src="https://cdn.simpleicons.org/apacheairflow/58a6ff" height="14" alt=""> Astronomer Certification for Apache Airflow 3 Fundamentals</div>
+    <div class="cert-item"><img src="https://cdn.simpleicons.org/apacheairflow/58a6ff" height="14" alt=""> Astronomer Certification for Apache Airflow Fundamentals</div>
+    <div class="cert-item">ITIL Foundation — IT Service Management</div>
+    <div class="cert-item">ISO 9001 — Quality Management Systems</div>
+    <div class="cert-item">Curs Formator (Trainer Certification)</div>
+    <div class="cert-item">The Present Threat Landscape — Security Awareness</div>
+  </div>
+</section>
+
+<!-- ── Education & Languages ── -->
+<section class="section" id="education">
+  <h2 class="section-title">Education &amp; Languages</h2>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="school">"Babes-Bolyai" University, Cluj-Napoca</div>
+      <div class="detail">Psychology — coursework completed (2012–2015)</div>
+    </div>
+    <div class="edu-item">
+      <div class="school">Petru Maior High School</div>
+      <div class="detail">Baccalaureate Diploma, Biochemistry (2003–2007)</div>
+    </div>
+    <div class="edu-item">
+      <div class="school">Languages</div>
+      <div class="detail">Romanian (Native) · English (Professional Working)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>&copy; 2026 George Farcas &mdash; Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  <p style="margin-top:4px">
+    <a href="https://github.com/gfarcas" target="_blank">GitHub</a> ·
+    <a href="https://linkedin.com/in/george-farcas" target="_blank">LinkedIn</a> ·
+    <a href="mailto:gimsys@gmail.com">Email</a>
+  </p>
+</footer>
+
+</body>
+</html>
